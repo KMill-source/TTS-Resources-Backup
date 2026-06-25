@@ -78,9 +78,15 @@ Tabletop Simulator looks for save files in a specific directory on your operatin
 
 #### Copying the Files:
 1.  Extract/unzip the downloaded file. You will get a folder (e.g. `LTC_Table`).
-2.  Inside this folder, you will see `TS_Save_1.json` and `TS_Save_1.png`. **Do not rename these files**, as TTS requires them to be named `TS_Save_<number>`.
-3.  Copy the entire folder (e.g. `LTC_Table/`, `Hutber/`, or `ForceOrg/`) directly into the `Saves/` folder listed above.
+2.  Inside this folder, you will see `TS_Save_1.json` and `TS_Save_1.png`.
+3.  Copy the entire folder (e.g., `LTC_Table/`, `Hutber/`, or `ForceOrg/`) directly into the `Saves/` folder listed above.
     *   *Resulting path example:* `.../Tabletop Simulator/Saves/LTC_Table/TS_Save_1.json`
+
+> [!WARNING]
+> **Preventing Save Overwrites & Conflicts:**
+> *   **If using Subfolders (Recommended):** Because each save is in its own folder, they can all be named `TS_Save_1` without conflicting. TTS will display these folders in your in-game Save & Load menu.
+> *   **If copying files directly to the root `Saves/` folder:** You **must** rename the `.json` and `.png` files to the next available number in your saves. For example, if you already have files up to `TS_Save_30.json`, you must rename the imported files to `TS_Save_31.json` and `TS_Save_31.png` so you do not overwrite your own saved games!
+
 
 ### Step 3: Launch TTS & Load the Save
 1.  Launch **Tabletop Simulator** via Steam.
