@@ -57,15 +57,41 @@ shasum -a 256 /path/to/downloaded-file.zip
 
 ## 🚀 Installation Guide
 
-### Step 1: Download the Backups
+Choose either the automated script method (easiest for Windows users) or the manual method.
+
+---
+
+### Method 1: Automated Script (Windows Only - Recommended)
+
+This repository includes a PowerShell script `install_saves.ps1` that automates the entire installation. It will automatically:
+1. Locate your Tabletop Simulator Saves folder (supporting both standard and OneDrive paths).
+2. Scan your current saves to find the next available save number.
+3. Extract, rename, and install the save files directly into your game's directory so they do not conflict with or overwrite any of your current saves.
+
+#### How to use it:
+1. Click the green **Code** button at the top-right of this page and select **Download ZIP** (or download the files to your PC).
+2. Extract the downloaded ZIP file.
+3. Right-click the [install_saves.ps1](file:///C:/Users/KMill/OneDrive/Documents/Temp%20Github/install_saves.ps1) file and select **Run with PowerShell**.
+   * *Alternatively*, open a PowerShell window in the folder and run:
+     ```powershell
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+     .\install_saves.ps1
+     ```
+4. The script will output a success message showing which save numbers the tables were imported as.
+
+---
+
+### Method 2: Manual Installation (macOS, Linux, or Custom)
+
+#### Step 1: Download the Backups
 You can download the save folders in one of two ways:
 *   **Option A (Recommended):** Click on any of the `.zip` files in the file list above (e.g., `LTC_Table.zip`), click the **Download** button on GitHub, and save it to your computer.
 *   **Option B (All Saves):** Click the green **Code** button at the top-right of this page and select **Download ZIP** to download all backups at once.
 
-### Step 2: Copy to Tabletop Simulator Saves
+#### Step 2: Copy to Tabletop Simulator Saves
 Tabletop Simulator looks for save files in a specific directory on your operating system. You need to copy the unzipped folders into your game's `Saves` folder.
 
-#### Save Folder Locations by OS:
+##### Save Folder Locations by OS:
 *   **Windows (Standard):**
     `%USERPROFILE%\Documents\My Games\Tabletop Simulator\Saves`
     *(Alternatively: `C:\Users\<Your-Username>\Documents\My Games\Tabletop Simulator\Saves`)*
@@ -76,7 +102,7 @@ Tabletop Simulator looks for save files in a specific directory on your operatin
 *   **Linux / Steam Deck:**
     `~/.local/share/Tabletop Simulator/Saves`
 
-#### Copying the Files:
+##### Copying the Files:
 1.  Extract/unzip the downloaded file. You will get a folder (e.g. `LTC_Table`).
 2.  Inside this folder, you will see `TS_Save_1.json` and `TS_Save_1.png`.
 3.  Copy the entire folder (e.g., `LTC_Table/`, `Hutber/`, or `ForceOrg/`) directly into the `Saves/` folder listed above.
@@ -87,8 +113,7 @@ Tabletop Simulator looks for save files in a specific directory on your operatin
 > *   **If using Subfolders (Recommended):** Because each save is in its own folder, they can all be named `TS_Save_1` without conflicting. TTS will display these folders in your in-game Save & Load menu.
 > *   **If copying files directly to the root `Saves/` folder:** You **must** rename the `.json` and `.png` files to the next available number in your saves. For example, if you already have files up to `TS_Save_30.json`, you must rename the imported files to `TS_Save_31.json` and `TS_Save_31.png` so you do not overwrite your own saved games!
 
-
-### Step 3: Launch TTS & Load the Save
+#### Step 3: Launch TTS & Load the Save
 1.  Launch **Tabletop Simulator** via Steam.
 2.  Select **Create** -> **Singleplayer** (or **Multiplayer** to host a game).
 3.  Click **Games** in the top menu bar, then click **Save & Load**.
