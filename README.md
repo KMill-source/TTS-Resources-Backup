@@ -26,19 +26,20 @@ This backup contains saves for three major 40k table and utility frameworks:
 
 ## 🛡️ Security & File Verification
 
-To ensure that these backup files are safe and have not been modified, we provide the SHA-256 hashes for the core `.json` Tabletop Simulator save files and the installer script, along with direct scan report links on **VirusTotal**.
+To ensure that these backup files are safe and have not been modified, we provide the SHA-256 hashes for the core `.json` Tabletop Simulator save files and the installer scripts, along with direct scan report links on **VirusTotal**.
 
 ### 🔍 File Hashes & VirusTotal Reports
 
 | File Name | SHA-256 Hash | VirusTotal Scan Report |
 | :--- | :--- | :--- |
 | **`install_saves.ps1`** | `f221861b3e8532e06a5a234a33f03af19eef1852aca2e27a8905e0ea359f0e6a` | [View Report](https://www.virustotal.com/gui/file/f221861b3e8532e06a5a234a33f03af19eef1852aca2e27a8905e0ea359f0e6a) |
+| **`install_saves.sh`** | `77d22b7dbdf22b435f6dd4ae245130a0dce55936529e9fd7e2a2e4b8e47b3daf` | [View Report](https://www.virustotal.com/gui/file/77d22b7dbdf22b435f6dd4ae245130a0dce55936529e9fd7e2a2e4b8e47b3daf) |
 | **`ForceOrg/TS_Save_1.json`** | `80b514ebfaa25f31abfa2a29d3660606b925e04667fe6c26ea4deb43590e3afe` | [View Report](https://www.virustotal.com/gui/file/80b514ebfaa25f31abfa2a29d3660606b925e04667fe6c26ea4deb43590e3afe) |
 | **`Hutber/TS_Save_1.json`** | `f62515a844feae20dd4f37e4f3b5f1e37660d9fe59e194920502af5c7e0d755b` | [View Report](https://www.virustotal.com/gui/file/f62515a844feae20dd4f37e4f3b5f1e37660d9fe59e194920502af5c7e0d755b) |
 | **`LTC_Table/TS_Save_1.json`** | `d360000d4aa411051705416275494df94d25a221ab35708dc734f42f9865c538` | [View Report](https://www.virustotal.com/gui/file/d360000d4aa411051705416275494df94d25a221ab35708dc734f42f9865c538) |
 
 > [!TIP]
-> If a file has not been analyzed by VirusTotal yet when you click the link, you can upload the file directly to [VirusTotal](https://www.virustotal.com/) to trigger a fresh scan. Since these are plain text JSON files and open-source PowerShell script files, they will scan clean.
+> If a file has not been analyzed by VirusTotal yet when you click the link, you can upload the file directly to [VirusTotal](https://www.virustotal.com/) to trigger a fresh scan. Since these are plain text JSON files and open-source installer scripts, they will scan clean.
 
 ### 🖥️ How to Verify Hashes Locally
 
@@ -46,30 +47,30 @@ You can check the hash of any file you download to confirm it matches the hashes
 
 #### Windows (PowerShell):
 ```powershell
-Get-FileHash -Path "C:\path\to\downloaded-file.zip" -Algorithm SHA256
+Get-FileHash -Path "C:\path\to\downloaded-file" -Algorithm SHA256
 ```
 
 #### macOS / Linux (Terminal):
 ```bash
-shasum -a 256 /path/to/downloaded-file.zip
+shasum -a 256 /path/to/downloaded-file
 ```
 
 ---
 
 ## 🚀 Installation Guide
 
-Choose either the automated script method (easiest for Windows users) or the manual method.
+Choose either the automated script method (easiest) or the manual method.
 
 ---
 
-### Method 1: Automated Script (Windows Only - Recommended)
+### Method 1: Automated Script (Recommended)
 
-This repository includes a PowerShell script `install_saves.ps1` that automates the entire installation. It will automatically:
-1. Locate your Tabletop Simulator Saves folder (supporting both standard and OneDrive paths).
+This repository includes installer scripts that automate the entire setup:
+1. Locate your Tabletop Simulator Saves folder.
 2. Scan your current saves to find the next available save number.
 3. Extract, rename, and install the save files directly into your game's directory so they do not conflict with or overwrite any of your current saves.
 
-#### How to use it:
+#### For Windows:
 1. Click the green **Code** button at the top-right of this page and select **Download ZIP** (or download the files to your PC).
 2. Extract the downloaded ZIP file.
 3. Right-click the `install_saves.ps1` file and select **Run with PowerShell**.
@@ -79,6 +80,15 @@ This repository includes a PowerShell script `install_saves.ps1` that automates 
      .\install_saves.ps1
      ```
 4. The script will output a success message showing which save numbers the tables were imported as.
+
+#### For macOS & Linux / Steam Deck:
+1. Open your Terminal and navigate to the extracted repository folder.
+2. Make the script executable and run it:
+   ```bash
+   chmod +x install_saves.sh
+   ./install_saves.sh
+   ```
+3. The script will output a success message showing which save numbers the tables were imported as.
 
 ---
 
