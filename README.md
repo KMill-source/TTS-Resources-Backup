@@ -145,9 +145,12 @@ To build and play with your army on Tabletop Simulator, you should use the follo
 *   Subscribe to it on Steam: [Yellowscribe V2 Workshop Page](https://steamcommunity.com/sharedfiles/filedetails/?id=2888164016)
 *   Yellowscribe binds your list's stats, weapon options, and rules directly to your models in TTS, showing rules on hover and handling range/movement trackers.
 
-### 3. Spawn Models (ForceOrg)
-*   **ForceOrg** is the standard tool used to scale model bases, bind stats, and format armies. Special thanks to **Raikoh** for creating and maintaining the official [ForceOrg Downloader](https://gitlab.com/forceorg1/ForceOrg-Downloader).
-*   Load the **ForceOrg** save table.
-*   Paste your Yellowscribe roster code into the ForceOrg console.
-*   Spawn your models. Once spawned, select your entire army, right-click, and select **Save Object**.
-*   This adds your army to your TTS inventory. You can now load any map (e.g., LTC Table or Hutber) and drag your saved army onto the table!
+### 3. Build Army (ForceOrg)
+*   **ForceOrg** is the standard tool used to bind stats and format armies. Special thanks to **Raikoh** for creating and maintaining the official [ForceOrg Downloader](https://gitlab.com/forceorg1/ForceOrg-Downloader).
+
+#### How to use ForceOrg:
+1. Load the **ForceOrg** save table.
+2. Paste your Yellowscribe roster code into the Yellowscribe Helper on the table.
+3. Drag your models to the staging area.
+4. Map your models to the Yellowscribe cards.
+5. Create your army. Once created, select your entire army, right-click, and select **Save Object** to add it to your TTS inventory. You can now load any map (e.g., LTC Table or Hutber) and drag your saved army onto the table!
