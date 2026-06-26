@@ -203,3 +203,6 @@ if ($successCount -eq $zipFiles.Count) {
     Write-Host "  No tables were installed. Check warnings above.  " -ForegroundColor Red
 }
 Write-Host "=============================================" -ForegroundColor Cyan
+
+Write-Host ""
+Read-Host "Press Enter to close this window"
