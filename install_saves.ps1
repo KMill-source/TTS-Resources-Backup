@@ -23,31 +23,39 @@ $scriptRoot = if ($PSScriptRoot -and $PSScriptRoot -ne "") {
 if (-not $scriptRoot -or -not (Test-Path $scriptRoot)) {
     Write-Warning "Could not determine the script's directory. Please run this script from within its folder."
     Write-Host "Tip: Open PowerShell, navigate to the script's folder with 'cd', then run '.\install_saves.ps1'" -ForegroundColor Yellow
+    Read-Host "Press Enter to close this window"
     exit 1
 }
 
 Write-Host "Script directory: $scriptRoot" -ForegroundColor DarkGray
 
-# 1. Check for USERPROFILE/HOME environment variable
+# 1. Gather possible Saves folder directories
+$possiblePaths = @()
+
+# Method A: Try standard/OneDrive locations based on USERPROFILE/HOME
 $userProfile = $env:USERPROFILE
 if (-not $userProfile) {
-    Write-Warning "USERPROFILE environment variable is not defined on this system."
-    Write-Host "Attempting to use the HOME directory instead..." -ForegroundColor Yellow
     $userProfile = $env:HOME
 }
-
-if (-not $userProfile -or -not (Test-Path $userProfile)) {
-    Write-Warning "Could not determine your user profile directory (USERPROFILE or HOME is missing/invalid)."
-    Write-Host "Please ensure you run this script with proper user privileges." -ForegroundColor Red
-    exit 1
+if ($userProfile) {
+    $possiblePaths += (Join-Path $userProfile "Documents\My Games\Tabletop Simulator\Saves")
+    $possiblePaths += (Join-Path $userProfile "OneDrive\Documents\My Games\Tabletop Simulator\Saves")
 }
 
-# 2. Locate the Tabletop Simulator Saves directory
-$possiblePaths = @(
-    (Join-Path $userProfile "Documents\My Games\Tabletop Simulator\Saves"),
-    (Join-Path $userProfile "OneDrive\Documents\My Games\Tabletop Simulator\Saves")
-)
+# Method B: Try official Windows Documents library path (handles OneDrive redirections & custom drive letters)
+try {
+    $documentsPath = [Environment]::GetFolderPath("MyDocuments")
+    if ($documentsPath) {
+        $possiblePaths += (Join-Path $documentsPath "My Games\Tabletop Simulator\Saves")
+    }
+} catch {
+    # Silently continue if .NET call fails
+}
 
+# Clean duplicates and nulls while preserving search order
+$possiblePaths = $possiblePaths | Where-Object { $_ } | Select-Object -Unique
+
+# 2. Verify if any of the candidate paths exist
 $targetSavesPath = $null
 foreach ($path in $possiblePaths) {
     try {
@@ -56,18 +64,25 @@ foreach ($path in $possiblePaths) {
             break
         }
     } catch {
-        Write-Warning "Error checking path '$path': $_"
+        # Silently continue to next candidate path
     }
 }
 
+# Method C: Ultimate fallback - prompt user if auto-detection failed
 if (-not $targetSavesPath) {
-    Write-Warning "Could not find your Tabletop Simulator Saves directory."
-    Write-Host "Checked locations:" -ForegroundColor Yellow
-    foreach ($path in $possiblePaths) {
-        Write-Host " - $path" -ForegroundColor Yellow
+    Write-Warning "Could not automatically locate your Tabletop Simulator Saves directory."
+    Write-Host "Please enter the path to your Tabletop Simulator Saves folder manually." -ForegroundColor Yellow
+    Write-Host "Example: C:\Users\Username\Documents\My Games\Tabletop Simulator\Saves" -ForegroundColor DarkGray
+    
+    $userInput = Read-Host "Saves Folder Path"
+    if ($userInput -and (Test-Path $userInput)) {
+        $targetSavesPath = $userInput
+    } else {
+        Write-Warning "The entered path does not exist or is invalid."
+        Write-Host "Aborting installation." -ForegroundColor Red
+        Read-Host "Press Enter to close this window"
+        exit 1
     }
-    Write-Host "`nPlease ensure Tabletop Simulator is installed and you have created/saved at least one game in-game to initialize the directory." -ForegroundColor Yellow
-    exit 1
 }
 
 Write-Host "Found Tabletop Simulator Saves folder at:" -ForegroundColor Green
@@ -82,9 +97,13 @@ function Get-StartingSaveIndex($path) {
         $maxIndex = 0
         foreach ($file in $saveFiles) {
             if ($file.BaseName -match '^TS_Save_(\d+)$') {
-                $index = [int]$matches[1]
-                if ($index -gt $maxIndex) {
-                    $maxIndex = $index
+                try {
+                    $index = [int]$matches[1]
+                    if ($index -gt $maxIndex) {
+                        $maxIndex = $index
+                    }
+                } catch {
+                    # Skip overflowed or invalid numbers to prevent crashing the scan
                 }
             }
         }
