@@ -26,18 +26,18 @@ This backup contains saves for three major 40k table and utility frameworks:
 
 ## 🛡️ Security & File Verification
 
-To ensure that these backup files are safe and have not been modified, we provide the SHA-256 hashes for each zip file, along with direct search links on **VirusTotal**.
+To ensure that these backup files are safe and have not been modified, we provide the SHA-256 hashes for the core `.json` Tabletop Simulator save files, along with direct scan report links on **VirusTotal**.
 
 ### 🔍 File Hashes & VirusTotal Reports
 
 | File Name | SHA-256 Hash | VirusTotal Scan Report |
 | :--- | :--- | :--- |
-| **`ForceOrg.zip`** | `c439b826433efac6ddcc1d47c459b331357ad779317797748b0df4748c187947` | [View Report](https://www.virustotal.com/gui/file/c439b826433efac6ddcc1d47c459b331357ad779317797748b0df4748c187947) |
-| **`Hutber.zip`** | `50f77bfb17b552083427439d1edde3e802a314d5c6edddccd46663fbc7b15962` | [View Report](https://www.virustotal.com/gui/file/50f77bfb17b552083427439d1edde3e802a314d5c6edddccd46663fbc7b15962) |
-| **`LTC_Table.zip`** | `12705f05d4081428fc31e6abc8741a236d410b669000b895a3252fc1c55a9f02` | [View Report](https://www.virustotal.com/gui/file/12705f05d4081428fc31e6abc8741a236d410b669000b895a3252fc1c55a9f02) |
+| **`ForceOrg/TS_Save_1.json`** | `80b514ebfaa25f31abfa2a29d3660606b925e04667fe6c26ea4deb43590e3afe` | [View Report](https://www.virustotal.com/gui/file/80b514ebfaa25f31abfa2a29d3660606b925e04667fe6c26ea4deb43590e3afe) |
+| **`Hutber/TS_Save_1.json`** | `f62515a844feae20dd4f37e4f3b5f1e37660d9fe59e194920502af5c7e0d755b` | [View Report](https://www.virustotal.com/gui/file/f62515a844feae20dd4f37e4f3b5f1e37660d9fe59e194920502af5c7e0d755b) |
+| **`LTC_Table/TS_Save_1.json`** | `d360000d4aa411051705416275494df94d25a221ab35708dc734f42f9865c538` | [View Report](https://www.virustotal.com/gui/file/d360000d4aa411051705416275494df94d25a221ab35708dc734f42f9865c538) |
 
 > [!TIP]
-> If a file has not been analyzed by VirusTotal yet when you click the link, you can upload the zip file directly to [VirusTotal](https://www.virustotal.com/) to trigger a fresh scan. Since these files are just compressed JSON text and PNG images, they will scan clean.
+> If a file has not been analyzed by VirusTotal yet when you click the link, you can upload the `.json` save file directly to [VirusTotal](https://www.virustotal.com/) to trigger a fresh scan. Since these are plain text JSON files, they will scan clean.
 
 ### 🖥️ How to Verify Hashes Locally
 
