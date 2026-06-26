@@ -11,7 +11,7 @@ This repository is provided purely as a **free community service backup location
 *   **Credits:** All content, designs, scripts, and tables are created, updated, and supported by the outstanding developers and community members of:
     *   **LTC (League of Tactical Commanders)**
     *   **Hutber (Hutber 40k Competitive Maps)**
-    *   **ForceOrg Team**
+    *   **ForceOrg Team** (Special thanks to **Raikoh** for creating and maintaining the official [ForceOrg Downloader](https://gitlab.com/forceorg1/ForceOrg-Downloader))
     Please support these creators directly on Steam Workshop and their respective community Discord servers.
 
 ---
@@ -146,6 +146,7 @@ To build and play with your army on Tabletop Simulator, you should use the follo
 *   Yellowscribe binds your list's stats, weapon options, and rules directly to your models in TTS, showing rules on hover and handling range/movement trackers.
 
 ### 3. Spawn Models (ForceOrg)
+*   **ForceOrg** is the standard tool used to scale model bases, bind stats, and format armies. Special thanks to **Raikoh** for creating and maintaining the official [ForceOrg Downloader](https://gitlab.com/forceorg1/ForceOrg-Downloader).
 *   Load the **ForceOrg** save table.
 *   Paste your Yellowscribe roster code into the ForceOrg console.
 *   Spawn your models. Once spawned, select your entire army, right-click, and select **Save Object**.
