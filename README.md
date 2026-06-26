@@ -71,7 +71,7 @@ This repository includes a PowerShell script `install_saves.ps1` that automates 
 #### How to use it:
 1. Click the green **Code** button at the top-right of this page and select **Download ZIP** (or download the files to your PC).
 2. Extract the downloaded ZIP file.
-3. Right-click the [install_saves.ps1](file:///C:/Users/KMill/OneDrive/Documents/Temp%20Github/install_saves.ps1) file and select **Run with PowerShell**.
+3. Right-click the `install_saves.ps1` file and select **Run with PowerShell**.
    * *Alternatively*, open a PowerShell window in the folder and run:
      ```powershell
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -117,8 +117,8 @@ Tabletop Simulator looks for save files in a specific directory on your operatin
 1.  Launch **Tabletop Simulator** via Steam.
 2.  Select **Create** -> **Singleplayer** (or **Multiplayer** to host a game).
 3.  Click **Games** in the top menu bar, then click **Save & Load**.
-4.  You will see folders named **LTC_Table**, **Hutber**, and/or **ForceOrg** corresponding to the folders you copied.
-5.  Double-click the folder, then click on the save file image to load the table!
+4.  If you copied the entire **subfolder** (e.g. `LTC_Table/`), you will see a folder with that name in the list — double-click it, then click the save image inside to load it.
+5.  If you copied the files **directly into the root** `Saves/` folder (renaming them to `TS_Save_31.json` etc.), they will appear individually in the root of your save list by their in-game save name.
 
 ---
 
